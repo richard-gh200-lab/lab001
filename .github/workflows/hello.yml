@@ -1,0 +1,9 @@
+name: Hello
+on:
+  workflow_dispatch:        # manual trigger — a button in the Actions tab
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running on $RUNNER_OS"
+      - run: dotnet --version
