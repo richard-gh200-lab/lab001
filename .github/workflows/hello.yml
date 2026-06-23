@@ -9,6 +9,7 @@ jobs:
       - run: echo "build number 42" > result.txt
       - run: cat result.txt            # prove the file exists in THIS job
   report:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: cat result.txt            # try to read what build wrote
