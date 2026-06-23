@@ -1,9 +1,14 @@
 name: Hello
 on:
-  workflow_dispatch:        # manual trigger — a button in the Actions tab
+  workflow_dispatch:
 jobs:
-  greet:
+  build:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Running on $RUNNER_OS"
-      - run: dotnet --version
+      - run: echo "build number 42" > result.txt
+      - run: cat result.txt            # prove the file exists in THIS job
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cat result.txt            # try to read what build wrote
